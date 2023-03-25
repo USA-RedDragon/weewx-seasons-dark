@@ -302,3 +302,34 @@ a:hover {
 @media (min-width:801px) {
     #plot_group { overflow: hidden; float: none; }
 }
+
+.collapsable summary::-webkit-details-marker,
+.collapsable summary::marker {
+  display: none;
+  content: "";
+}
+
+.collapsable summary:focus {
+  outline-style: none;
+}
+
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+  color: #eee;
+}
+  
+
+.temp-hot svg {
+  color: #ff3344;
+}
+
+.temp-cold svg {
+  color: #33aaff;
+}
+
+.temp-norm svg {
+  color: #eee;
+}

@@ -25,6 +25,48 @@
     #include "titlebar.inc"
     
     <div id="contents">
+
+      <details id="forecast" class="collapsable">
+        <summary>
+          <div class="widget_title" style="font-size: 110%">
+            #for $twelve_hour in $nwsforecast.twelve_hour_forecasts(1)
+              Forecast - <span style="font-size: 95%;">$twelve_hour.name: <span style="color: grey;">$twelve_hour.shortForecast</span></span><a class="widget_control" href="#">♦</a></h2>
+            #end for
+        </summary>
+        <div>
+          <table style='width:97%;text-align:center;border-bottom:white dotted 1px;'>
+            <tr>
+              #for $hour in $nwsforecast.one_hour_forecasts(7)
+                <td style='width:14.2857%;vertical-align:bottom;'>
+                  <span style='border-bottom:1pt solid LightGray;'>$hour.startTime.format('%l %p')</span>
+                </td>
+              #end for
+            </tr>
+            <tr>
+              #for $hour in $nwsforecast.one_hour_forecasts(7)
+                <td style='width:14.2857%;'>
+                  #set $icon = $hour.iconUrl
+                  #set icon = $icon.replace('?size=small', '?size=medium')
+                  #set icon = $icon.replace(',0?', '?')
+                  <img src='$icon' alt='$icon'>
+                </td>
+              #end for
+            </tr>
+            <tr>
+              #for $hour in $nwsforecast.one_hour_forecasts(7)
+                <td style='width:14.2857%;vertical-align:top;'>
+                  $hour.outTemp.format('%.0f')$unit.label.outTemp $hour.outTempTrend<br>
+                  $hour.shortForecast
+                </td>
+              #end for
+            </tr>
+          </table>
+        </div>
+        <br>
+        #include "forecast_days.inc"
+      </details>
+      <br />
+
       <div id="widget_group">
         #include "current.inc"
         #include "sunmoon.inc"
