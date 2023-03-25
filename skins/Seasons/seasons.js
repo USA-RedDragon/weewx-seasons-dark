@@ -6,6 +6,8 @@
 const cookie_prefix = "weewx.seasons.";
 let year_type = get_state('year_type', 'year');
 
+document.addEventListener('DOMContentLoaded', setup, false);
+
 function setup(widgets) {
     // set the state of the history widget
     const id = get_state('history', 'day');
